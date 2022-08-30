@@ -1,34 +1,23 @@
-## The template this flake was based on can be found here:
-## https://github.com/johnae/nix-flake-templates/devshell
 {
-  description = "A simple devshell flake";
+  description = "my portable dotfiles";
 
-  inputs = {
-    flake-utils.url = "github:numtide/flake-utils";
-  };
+  inputs.flake-utils.url = "github:numtide/flake-utils";
 
-  outputs = {
-    self,
-    nixpkgs,
-    flake-utils,
-  }: let
-    pkgsFor = system:
-      import nixpkgs {
-        inherit system;
-        overlays = [
-        ];
-      };
-    forAllDefaultSystems = f:
-      flake-utils.lib.eachDefaultSystem
-      (system: f system (pkgsFor system));
-  in
-    forAllDefaultSystems (
-      system: pkgs: {
-        devShell = pkgs.mkShell {
-          buildInputs = [
-            pkgs.curl
-          ];
-        };
-      }
-    );
+  outputs = { self, nixpkgs, flake-utils }:
+    flake-utils.lib.eachDefaultSystem
+      (system:
+        let pkgs = nixpkgs.legacyPackages.${system}; in
+        {
+          devShells.default = pkgs.mkShell {
+            buildInputs = with pkgs; [
+              curl
+              starship
+            ];
+            shellHook = ''
+              eval $(${pkgs.starship}/bin/starship init bash)
+            '';
+          };
+        }
+      );
 }
+
