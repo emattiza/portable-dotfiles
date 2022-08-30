@@ -14,7 +14,7 @@
               starship
             ];
             shellHook = ''
-              eval $(${pkgs.starship}/bin/starship init bash)
+              source <(${pkgs.starship}/bin/starship init bash --print-full-init)
             '';
           };
         }
