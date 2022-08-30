@@ -8,19 +8,15 @@
       (system:
         let pkgs = nixpkgs.legacyPackages.${system}; in
         rec {
-	  packages = flake-utils.lib.flattenTree {
-		  myDevShell = pkgs.mkShell {
-		    buildInputs = with pkgs; [
-		      curl
-		      starship
-		    ];
-		    shellHook = ''
-		      source <(${pkgs.starship}/bin/starship init bash --print-full-init)
-		    '';
-		  };
+	  devShell = pkgs.mkShell {
+	    buildInputs = with pkgs; [
+	      curl
+	      starship
+	    ];
+	    shellHook = ''
+	      source <(${pkgs.starship}/bin/starship init bash --print-full-init)
+	    '';
 	  };
-	  defaultPackage = packages.myDevShell;
-	  devShell = packages.myDevShell;
         }
       );
 }
