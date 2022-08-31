@@ -17,3 +17,9 @@ jobs:
         signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
     - run: nix develop --profile /tmp/buildEnv
     - run: cachix push emattiza /tmp/buildEnv
+    - run: |
+        runs=$(nix flake show --json --legacy | jq -r '.devShells."x86_64-linux" | keys | join(" ") | @base64')
+        for row in $(echo "$runs" | base64 --decode); do
+          nix develop .#"$row" --profile /tmp/"$row"
+          cachix push emattiza /tmp/"$row"
+        done
