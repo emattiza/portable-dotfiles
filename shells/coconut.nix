@@ -4,5 +4,10 @@ pkgs.mkShell {
     coconut
     python310
   ];
-  shellHook = "source <(${pkgs.starship}/bin/starship init bash --print-full-init)\n";
+  shellHook = ''
+    if [[ ! $HOST_PATH == *"starship"* ]];
+    then
+       eval <(starship init bash --print-full-init)
+    fi
+  '';
 }
