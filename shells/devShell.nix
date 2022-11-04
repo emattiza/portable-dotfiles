@@ -1,10 +1,10 @@
 {pkgs, vim, ...}:
 pkgs.mkShell {
-  buildInputs = with pkgs; [curl httpie starship vim];
+  buildInputs = with pkgs; [curl httpie starship vim ranger];
   shellHook = ''
     if [[ ! $HOST_PATH == *"starship"* ]];
     then
-       eval <(starship init bash --print-full-init)
+       source <(starship init bash --print-full-init)
     fi
   '';
 }
