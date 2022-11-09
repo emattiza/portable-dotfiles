@@ -114,11 +114,11 @@
     },
     "flake-utils": {
       "locked": {
-        "lastModified": 1659877975,
-        "narHash": "sha256-zllb8aq3YO3h8B/U0/J1WBgAL8EX5yWf5pMj3G0NAmc=",
+        "lastModified": 1667395993,
+        "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "c0e246b9b83f637f4681389ecabcb2681b4f3af0",
+        "rev": "5aed5285a952e0b949eb3ba02c12fa4fcfef535f",
         "type": "github"
       },
       "original": {
@@ -335,16 +335,16 @@
         "which-key": "which-key"
       },
       "locked": {
-        "lastModified": 1667503023,
-        "narHash": "sha256-gY+mkVbHS5g9gpYfP5GYCGmgof+MC26DtrbclWT+naw=",
+        "lastModified": 1668002741,
+        "narHash": "sha256-svfPD4CSuKBGmaEYpAckKN2pT4szbi1S14M3AafikB4=",
         "owner": "emattiza",
         "repo": "neovim-flake",
-        "rev": "95e4e6de2063087010dd47e1524c58d527c32185",
+        "rev": "a3abb7f152c64406b99f501130b84d0b0e108e12",
         "type": "github"
       },
       "original": {
         "owner": "emattiza",
-        "ref": "terafox-tweak",
+        "ref": "main",
         "repo": "neovim-flake",
         "type": "github"
       }
@@ -459,11 +459,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1661720780,
-        "narHash": "sha256-AJNGyaB2eKZAYaPNjBZOzap87yL+F9ZLaFzzMkvega0=",
+        "lastModified": 1667901915,
+        "narHash": "sha256-IkSou5ox/yZ2YUhGpk8vxd2TNU2pwRlYtir5k55NaxE=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "a63021a330d8d33d862a8e29924b42d73037dd37",
+        "rev": "093268502280540a7f5bf1e2a6330a598ba3b7d0",
         "type": "github"
       },
       "original": {

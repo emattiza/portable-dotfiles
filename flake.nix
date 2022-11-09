@@ -4,7 +4,7 @@
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    my-nvim.url = "github:emattiza/neovim-flake/terafox-tweak";
+    my-nvim.url = "github:emattiza/neovim-flake/main";
   };
   outputs = {
     self,
@@ -13,11 +13,15 @@
     my-nvim,
   }:
     flake-utils.lib.eachDefaultSystem (system: let
-      pkgs = nixpkgs.legacyPackages.${system};
-      vim = my-nvim.packages.${system}.default;
+      overlays = [my-nvim.overlays.${system}.default];
+      pkgs = import nixpkgs {
+        inherit system overlays;
+        config = {allowUnfree = true;};
+      };
     in rec {
       devShells = {
-        default = import ./shells/devShell.nix {inherit pkgs vim;};
+        default = import ./shells/devShell.nix {inherit pkgs;};
+        python = import ./shells/pythonDevShell.nix {inherit pkgs;};
         k8s = import ./shells/k8s.nix {inherit pkgs;};
         coconut = import ./shells/coconut.nix {inherit pkgs;};
       };
