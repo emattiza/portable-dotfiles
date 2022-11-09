@@ -1,6 +1,6 @@
 {pkgs, ...}:
 pkgs.mkShell {
-  buildInputs = with pkgs; [curl httpie starship neovimED ranger];
+  buildInputs = with pkgs; [curl httpie starship neovimEM ranger];
   shellHook = ''
     if [[ ! $HOST_PATH == *"starship"* ]];
     then
