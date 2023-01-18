@@ -12,8 +12,10 @@
     flake-utils,
     my-nvim,
   }:
-    flake-utils.lib.eachDefaultSystem (system: let
-      overlays = [my-nvim.overlays.${system}.default];
+    flake-utils.lib.eachDefaultSystem
+    (system: let
+      git-overlay = import ./overlays/git.nix;
+      overlays = [my-nvim.overlays.${system}.default git-overlay];
       pkgs = import nixpkgs {
         inherit system overlays;
         config = {allowUnfree = true;};
@@ -25,6 +27,8 @@
         k8s = import ./shells/k8s.nix {inherit pkgs;};
         coconut = import ./shells/coconut.nix {inherit pkgs;};
       };
-      devShell = devShells.default;
+      packages = {
+        git = pkgs.git;
+      };
     });
 }

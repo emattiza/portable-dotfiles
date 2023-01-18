@@ -1,6 +1,5 @@
 {
   pkgs,
-  vim,
   ...
 }: let
   update-check = import ../outdated-util {inherit pkgs;};
@@ -11,7 +10,7 @@ in
       update-check
       httpie
       starship
-      vim
+      neovimEM
       ranger
     ];
     shellHook = ''
