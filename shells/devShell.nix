@@ -11,6 +11,7 @@ in
       httpie
       starship
       neovimEM
+      upterm
       ranger
     ];
     shellHook = ''
