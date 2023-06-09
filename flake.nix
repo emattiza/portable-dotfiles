@@ -14,13 +14,13 @@
   }:
     flake-utils.lib.eachDefaultSystem
     (system: let
-      git-overlay = import ./overlays/git.nix;
-      overlays = [my-nvim.overlays.${system}.default git-overlay];
+      # git-overlay = import ./overlays/git.nix;
+      overlays = [my-nvim.overlays.${system}.default];
       pkgs = import nixpkgs {
         inherit system overlays;
         config = {allowUnfree = true;};
       };
-    in rec {
+    in {
       devShells = {
         default = import ./shells/devShell.nix {inherit pkgs;};
         python = import ./shells/pythonDevShell.nix {inherit pkgs;};
