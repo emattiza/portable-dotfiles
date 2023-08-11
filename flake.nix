@@ -5,8 +5,15 @@
     flake-utils.url = "github:numtide/flake-utils";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     my-nvim.url = "github:emattiza/neovim-flake/main";
-    nixpkgs-update.url = "github:ryantm/nixpkgs-update";
-    nixpkgs-review.url = "github:Mic92/nixpkgs-review/master";
+    nixpkgs-update = {
+      url = "github:ryantm/nixpkgs-update/0.3.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-review.follows = "nixpkgs-review";
+    };
+    nixpkgs-review = {
+      url = "github:Mic92/nixpkgs-review/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = {
     self,
