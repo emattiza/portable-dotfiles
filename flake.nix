@@ -8,7 +8,6 @@
     nixpkgs-update = {
       url = "github:ryantm/nixpkgs-update/main";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs-review.follows = "nixpkgs-review";
     };
     nixpkgs-review = {
       url = "github:Mic92/nixpkgs-review/master";
