@@ -6,7 +6,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     my-nvim.url = "github:emattiza/neovim-flake/main";
     nixpkgs-update = {
-      url = "github:ryantm/nixpkgs-update/0.3.0";
+      url = "github:ryantm/nixpkgs-update/main";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-review.follows = "nixpkgs-review";
     };
