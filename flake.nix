@@ -27,10 +27,17 @@
       # git-overlay = import ./overlays/git.nix;
       overlays = [
         my-nvim.overlays.${system}.default
-        (self: super: {
-          nixpkgs-review = nixpkgs-review.packages.${system}.default;
-          nixpkgs-update = nixpkgs-update.packages.${system}.default;
-        })
+        (self: super:
+          {
+            nixpkgs-review = nixpkgs-review.packages.${system}.default;
+          }
+          // (
+            if system == "x86_64-linux"
+            then {
+              nixpkgs-update = nixpkgs-update.packages.${system};
+            }
+            else {}
+          ))
       ];
       pkgs = import nixpkgs {
         inherit system overlays;
