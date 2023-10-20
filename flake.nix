@@ -27,6 +27,7 @@
       # git-overlay = import ./overlays/git.nix;
       overlays = [
         my-nvim.overlays.${system}.default
+        (import ./overlays/sqlacodegen.nix)
         (self: super:
           {
             nixpkgs-review = nixpkgs-review.packages.${system}.default;

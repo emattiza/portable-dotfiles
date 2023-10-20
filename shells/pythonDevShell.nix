@@ -6,5 +6,6 @@ pkgs.mkShell {
     entr
     exercism
     (python311.withPackages (ps: [ps.pytest ps.ipython]))
+    sqlacodegen
   ];
 }
