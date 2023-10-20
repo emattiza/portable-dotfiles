@@ -14,6 +14,7 @@ self: super: {
     ];
     propagatedBuildInputs = [
       super.python3.pkgs.sqlalchemy
+      super.python3.pkgs.psycopg2
     ];
     src = super.fetchFromGitHub {
       owner = "agronholm";
